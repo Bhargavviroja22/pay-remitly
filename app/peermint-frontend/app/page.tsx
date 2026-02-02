@@ -1,0 +1,592 @@
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowRight, Shield, Zap, Globe, Lock, TrendingUp, Users, DollarSign, CheckCircle, CreditCard, Coins } from "lucide-react";
+import { useEffect, useState } from "react";
+
+export default function Home() {
+  const [activeUsers, setActiveUsers] = useState(12938);
+  const [transactions, setTransactions] = useState(312840);
+  const [volume, setVolume] = useState(1253428901);
+  const [todayTransfers, setTodayTransfers] = useState(3214);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveUsers((prev) => prev + Math.floor(Math.random() * 5));
+      setTransactions((prev) => prev + Math.floor(Math.random() * 10));
+      setVolume((prev) => prev + Math.floor(Math.random() * 50000));
+      setTodayTransfers((prev) => prev + Math.floor(Math.random() * 3));
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <main className="w-full">
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-[#0D0D0D] via-[#1a1a1a] to-[#0D0D0D] text-white min-h-[90vh] flex items-center justify-center overflow-hidden">
+        {/* Animated background glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(143,255,115,0.1),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(232,224,255,0.08),transparent_50%)]"></div>
+        
+        <div className="container mx-auto px-6 py-20 relative z-10">
+          <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="space-y-8 animate-fade-in">
+              <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+                TRAVEL FREE
+                <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8FFF73] to-[#E8E0FF]">
+                  THEY PAY
+                </span>
+                <br />
+                YOU CRYPTO
+              </h1>
+              
+              <p className="text-xl text-gray-300 max-w-lg">
+                Seamless global travel payments powered by crypto, no borders, no banks.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/create"
+                  className="group px-8 py-4 bg-[#8FFF73] text-black font-semibold rounded-full hover:bg-[#7FEF63] transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(143,255,115,0.3)] hover:shadow-[0_0_50px_rgba(143,255,115,0.5)] flex items-center justify-center gap-2"
+                >
+                  Get Started
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                
+                <button className="px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-full hover:bg-white/10 transition-all backdrop-blur-sm">
+                  See Live Rates
+                </button>
+              </div>
+
+              {/* Live Stats */}
+              <div className="flex gap-8 pt-8 border-t border-white/10">
+                <div>
+                  <div className="text-3xl font-bold text-[#8FFF73]">{activeUsers.toLocaleString()}</div>
+                  <div className="text-sm text-gray-400">Active Wallets</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-[#E8E0FF]">${(volume / 1000000).toFixed(1)}M+</div>
+                  <div className="text-sm text-gray-400">Volume Processed</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Visual */}
+            <div className="relative">
+              <div className="relative w-full h-[500px] flex items-center justify-center">
+                {/* Smartphone mockup */}
+                <div className="absolute w-72 h-[500px] bg-linear-to-br from-gray-900 to-gray-800 rounded-[3rem] shadow-2xl transform hover:scale-105 transition-transform duration-500 border-8 border-gray-700 overflow-hidden">
+                  {/* Phone notch */}
+                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-40 h-7 bg-gray-900 rounded-b-3xl z-10"></div>
+                  
+                  {/* Phone screen */}
+                  <div className="p-6 pt-10 h-full bg-linear-to-br from-gray-800 to-gray-900">
+                    {/* App header */}
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 bg-linear-to-br from-[#8FFF73] to-[#E8E0FF] rounded-lg flex items-center justify-center">
+                          <Coins className="w-5 h-5 text-[#0D0D0D]" />
+                        </div>
+                        <span className="text-white font-bold text-sm">PeerMint</span>
+                      </div>
+                      <div className="text-[#8FFF73] text-xs font-semibold">SCAN TO PAY</div>
+                    </div>
+
+                    {/* QR Code */}
+                    <div className="bg-white rounded-3xl p-6 mb-4 animate-pulse">
+                      <div className="w-full aspect-square bg-linear-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl relative overflow-hidden">
+                        {/* QR Code pattern simulation */}
+                        <div className="absolute inset-4 grid grid-cols-8 grid-rows-8 gap-1">
+                          {[1,0,1,1,0,1,0,1,0,1,1,0,1,0,1,1,1,0,1,0,1,1,0,1,0,1,0,1,1,0,1,0,1,1,0,1,0,1,1,0,0,1,0,1,1,0,1,0,1,0,1,1,0,1,0,1,0,1,1,0,1,0,1,1].map((bit, i) => (
+                            <div
+                              key={i}
+                              className={`${bit ? 'bg-gray-900' : 'bg-white'} rounded-sm`}
+                            ></div>
+                          ))}
+                        </div>
+                        {/* Scan line effect */}
+                        <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#8FFF73]/30 to-transparent h-full animate-scroll"></div>
+                      </div>
+                    </div>
+
+                    {/* Payment details */}
+                    <div className="bg-gray-700/50 backdrop-blur-xl rounded-2xl p-4 border border-gray-600">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-gray-400 text-xs">Amount</span>
+                        <span className="text-white font-bold text-lg">$250.00</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-gray-400 text-xs">Pay with</span>
+                        <div className="flex items-center gap-1">
+                          <span className="text-[#8FFF73] text-sm">USDT</span>
+                          <span className="text-gray-500 text-xs">◎</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Scan indicator */}
+                    <div className="mt-4 text-center">
+                      <div className="inline-flex items-center gap-2 text-[#8FFF73] text-xs">
+                        <div className="w-2 h-2 bg-[#8FFF73] rounded-full animate-pulse"></div>
+                        <span>Ready to scan</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Floating Crypto Icons */}
+                <div className="absolute -top-10 -left-10 w-20 h-20 bg-white/10 backdrop-blur-xl rounded-2xl flex items-center justify-center animate-float border border-white/20 p-3 hover:scale-110 transition-transform">
+                  <Image src="/crypto-icons/sol.svg" alt="Solana" width={48} height={48} className="w-12 h-12" />
+                </div>
+                <div className="absolute -bottom-5 -right-5 w-16 h-16 bg-white/10 backdrop-blur-xl rounded-2xl flex items-center justify-center animate-float-delayed border border-white/20 p-2 hover:scale-110 transition-transform">
+                  <Image src="/crypto-icons/usdc.svg" alt="USDC" width={40} height={40} className="w-10 h-10" />
+                </div>
+                <div className="absolute top-20 -right-10 w-14 h-14 bg-orange-500/20 backdrop-blur-xl rounded-2xl flex items-center justify-center animate-float border border-orange-500/30 p-2 hover:scale-110 transition-transform">
+                  <Image src="/crypto-icons/doge.svg" alt="BONK" width={32} height={32} className="w-8 h-8" />
+                </div>
+                <div className="absolute bottom-20 -left-5 w-12 h-12 bg-yellow-500/20 backdrop-blur-xl rounded-2xl flex items-center justify-center animate-float-delayed border border-yellow-500/30 p-2 hover:scale-110 transition-transform">
+                  <Image src="/crypto-icons/doge.svg" alt="WIF" width={28} height={28} className="w-7 h-7" />
+                </div>
+
+                {/* Scanning effect circles */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 border-2 border-[#8FFF73]/20 rounded-full animate-ping"></div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 border-2 border-[#E8E0FF]/20 rounded-full animate-pulse"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll ticker */}
+        <div className="absolute bottom-0 w-full bg-black/50 backdrop-blur-sm border-t border-white/10 py-4 overflow-hidden">
+          <div className="flex animate-scroll whitespace-nowrap">
+            <span className="mx-8">✦ TRAVEL BORDERLESS, TRAVEL SMART, TRAVEL FREE</span>
+            <span className="mx-8">✦ PAY ANYWHERE, ANYTIME, WITHOUT CASH</span>
+            <span className="mx-8">✦ FRIENDS COVER YOU, CRYPTO PAYS THEM BACK</span>
+            <span className="mx-8">✦ TRAVEL BORDERLESS, TRAVEL SMART, TRAVEL FREE</span>
+            <span className="mx-8">✦ PAY ANYWHERE, ANYTIME, WITHOUT CASH</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Us Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Why Choose
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8FFF73] to-[#E8E0FF]"> PeerMint</span>?
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              The fastest, safest, and most affordable way to move money globally
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {[
+              {
+                title: "Fast Transfers",
+                desc: "Instant crypto settlements in seconds",
+                bg: "from-pink-100 to-pink-50",
+                icon: <Zap className="w-8 h-8 text-pink-600" />,
+              },
+              {
+                title: "Best Rates",
+                desc: "Lock-in live market rates instantly",
+                bg: "from-blue-100 to-blue-50",
+                icon: <TrendingUp className="w-8 h-8 text-blue-600" />,
+              },
+              {
+                title: "No Hidden Fees",
+                desc: "Transparent pricing, no surprises",
+                bg: "from-yellow-100 to-yellow-50",
+                icon: <DollarSign className="w-8 h-8 text-yellow-600" />,
+              },
+              {
+                title: "Borderless",
+                desc: "Send and receive from anywhere",
+                bg: "from-purple-100 to-purple-50",
+                icon: <Globe className="w-8 h-8 text-purple-600" />,
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className={`group bg-gradient-to-br ${item.bg} rounded-3xl p-8 hover:shadow-2xl transition-all transform hover:-translate-y-2 cursor-pointer border border-white`}
+              >
+                <div className="mb-4 transform group-hover:scale-110 transition-transform">
+                  {item.icon}
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-gray-600">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Borderless Payments Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12">
+            <div className="flex-1 space-y-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+                We Make
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8FFF73] to-[#10b981]"> Travel Payments</span>
+                <br />
+                Seamless And Borderless
+              </h2>
+              <p className="text-xl text-gray-600">
+                Send and receive crypto globally with zero friction. Your friend covers you locally, you repay them in crypto — instantly.
+              </p>
+              <Link
+                href="/create"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#10b981] to-[#8FFF73] text-black font-semibold rounded-full hover:shadow-xl transition-all transform hover:scale-105"
+              >
+                Start Sending Crypto
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+            <div className="flex-1">
+              <div className="relative w-full h-80 bg-gradient-to-br from-[#E9FCD4] to-[#E8E0FF] rounded-3xl flex items-center justify-center overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.8),transparent_70%)]"></div>
+                <div className="relative text-8xl animate-float">✈️</div>
+                <div className="absolute top-10 left-10 text-4xl animate-float-delayed">🌍</div>
+                <div className="absolute bottom-10 right-10 text-4xl animate-float">💳</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Crypto We Deal With + Metrics */}
+      <section className="py-20 bg-gradient-to-br from-gray-100 to-gray-50">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Crypto We Deal With
+            </h2>
+            <p className="text-xl text-gray-600">
+              Solana ecosystem & popular meme tokens 🚀
+              <span className="block text-sm mt-2 text-orange-600 font-semibold">
+                To the moon! 🌙 Diamond hands only 💎🙌
+              </span>
+            </p>
+          </div>
+
+          {/* Metrics */}
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+            <div className="bg-white rounded-3xl p-8 text-center shadow-xl border border-gray-200 hover:shadow-2xl transition-all hover:scale-105">
+              <div className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8FFF73] to-[#10b981] mb-2">
+                {(transactions / 1000).toFixed(0)}K+
+              </div>
+              <div className="text-gray-600 text-lg">Meme Coin Transactions 🔥</div>
+            </div>
+            <div className="bg-white rounded-3xl p-8 text-center shadow-xl border border-gray-200 hover:shadow-2xl transition-all hover:scale-105">
+              <div className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500 mb-2">
+                {(activeUsers / 1000).toFixed(1)}K+
+              </div>
+              <div className="text-gray-600 text-lg">Degen Traders 🚀</div>
+            </div>
+          </div>
+
+          {/* Crypto Icons */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            {[
+              { name: "Solana", symbol: "SOL", icon: "sol", color: "#14F195" },
+              { name: "USDC", symbol: "USDC", icon: "usdc", color: "#2775CA" },
+              { name: "Bonk", symbol: "BONK", icon: "doge", badge: "🔥 Meme", color: "#FF6B35" },
+              { name: "Dogwifhat", symbol: "WIF", icon: "doge", badge: "🔥 Meme", color: "#8B4513" },
+            ].map((crypto, i) => (
+              <div
+                key={i}
+                className="bg-white/80 backdrop-blur-xl rounded-3xl p-8 text-center hover:scale-110 transition-all duration-300 cursor-pointer border border-white/50 shadow-lg hover:shadow-2xl relative group"
+              >
+                {crypto.badge && (
+                  <div className="absolute top-3 right-3 bg-gradient-to-r from-orange-500 to-red-500 text-white text-[10px] px-2 py-1 rounded-full font-bold animate-pulse">
+                    {crypto.badge}
+                  </div>
+                )}
+                <div className="mb-4 flex justify-center transform group-hover:rotate-12 transition-transform">
+                  <Image
+                    src={`/crypto-icons/${crypto.icon}.svg`}
+                    alt={crypto.name}
+                    width={64}
+                    height={64}
+                    className="w-16 h-16"
+                  />
+                </div>
+                <div className="font-semibold text-gray-900 mb-1">{crypto.name}</div>
+                <div className="text-sm font-medium" style={{ color: crypto.color }}>{crypto.symbol}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Global Map Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Powering Payments
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] to-[#8FFF73]">
+                Across the Planet
+              </span>
+            </h2>
+          </div>
+
+          <div className="max-w-5xl mx-auto bg-gradient-to-br from-[#E9FCD4]/30 to-[#E8E0FF]/30 rounded-3xl p-12 relative overflow-hidden border border-gray-200">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(143,255,115,0.1),transparent_70%)]"></div>
+            
+            <div className="relative z-10 text-center">
+              <div className="text-8xl mb-8">🗺️</div>
+              <div className="flex justify-center gap-12 mb-8">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 bg-[#10b981] rounded-full animate-pulse"></div>
+                  <span className="text-sm font-semibold text-gray-700">India</span>
+                </div>
+                <div className="text-2xl text-gray-400">→</div>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 bg-[#8FFF73] rounded-full animate-pulse"></div>
+                  <span className="text-sm font-semibold text-gray-700">USA</span>
+                </div>
+                <div className="text-2xl text-gray-400">→</div>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 bg-[#E8E0FF] rounded-full animate-pulse"></div>
+                  <span className="text-sm font-semibold text-gray-700">Brazil</span>
+                </div>
+              </div>
+              <p className="text-lg text-gray-600">
+                Processing <span className="font-bold text-[#10b981]">{todayTransfers.toLocaleString()}</span> transfers today 🌍
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Steps Section - How It Works */}
+      <section className="py-20 bg-linear-to-br from-gray-50 to-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              How It Works
+            </h2>
+            <p className="text-xl text-gray-600">Simple, secure, and seamless crypto-to-fiat payments</p>
+          </div>
+
+          <div className="max-w-4xl mx-auto space-y-8">
+            {[
+              {
+                step: "01",
+                title: "Create Request",
+                desc: "Fill in the amount, UPI details, and expiry time. Your USDC will be locked in escrow.",
+                icon: <CreditCard className="w-8 h-8" />,
+                color: "from-[#FFF8C5] to-[#FEF3C7]",
+              },
+              {
+                step: "02",
+                title: "Helper Joins & Pays",
+                desc: "A helper scans your UPI QR code, pays in INR, and marks the transaction as paid.",
+                icon: <Users className="w-8 h-8" />,
+                color: "from-[#E9FCD4] to-[#D1FAE5]",
+              },
+              {
+                step: "03",
+                title: "Release Funds",
+                desc: "Once you confirm payment, release the USDC from escrow to the helper.",
+                icon: <CheckCircle className="w-8 h-8" />,
+                color: "from-[#E8E0FF] to-[#DDD6FE]",
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className={`flex items-center gap-8 bg-linear-to-r ${item.color} rounded-3xl p-8 hover:shadow-xl transition-all group`}
+              >
+                <div className="shrink-0 w-20 h-20 bg-white rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                  {item.icon}
+                </div>
+                <div className="flex-1">
+                  <div className="text-sm font-semibold text-gray-500 mb-1">STEP {item.step}</div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                  <p className="text-gray-600">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Security Section */}
+      <section className="py-20 bg-gradient-to-br from-[#E8E0FF] to-[#F3E8FF]">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              End-to-End Protection.
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+                Always Secure.
+              </span>
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {[
+              { title: "256-bit Encryption", icon: <Shield className="w-8 h-8" /> },
+              { title: "Audited Smart Contracts", icon: <Lock className="w-8 h-8" /> },
+              { title: "Wallet-Level Security", icon: <Shield className="w-8 h-8" /> },
+              { title: "No Custodial Risk", icon: <Lock className="w-8 h-8" /> },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="bg-white/60 backdrop-blur-xl rounded-3xl p-6 text-center hover:shadow-2xl transition-all border border-white/50 group"
+              >
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl mb-4 group-hover:scale-110 transition-transform text-purple-600">
+                  {item.icon}
+                </div>
+                <h3 className="font-bold text-gray-900">{item.title}</h3>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <div className="inline-flex items-center justify-center w-24 h-24 bg-white rounded-full shadow-2xl animate-pulse">
+              <Shield className="w-12 h-12 text-purple-600" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Supported Corridors Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Supported Corridors
+            </h2>
+            <p className="text-xl text-gray-600">Crypto to fiat conversion pairs</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {[
+              { from: "USDT", to: "INR", rate: "₹83.09", cryptoIcon: "usdt", flag: "IN" },
+              { from: "USDC", to: "USD", rate: "$1.00", cryptoIcon: "usdc", flag: "US" },
+              { from: "SOL", to: "EUR", rate: "€142.50", cryptoIcon: "sol", flag: "EU" },
+            ].map((corridor, i) => (
+              <div
+                key={i}
+                className="bg-white border border-gray-200 rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all group hover:scale-105 cursor-pointer"
+              >
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-3">
+                    <Image
+                      src={`/crypto-icons/${corridor.cryptoIcon}.svg`}
+                      alt={corridor.from}
+                      width={48}
+                      height={48}
+                      className="w-12 h-12"
+                    />
+                    <div className="text-left">
+                      <div className="font-bold text-gray-900">{corridor.from}</div>
+                      <div className="text-xs text-gray-500">Crypto</div>
+                    </div>
+                  </div>
+                  <div className="text-[#8FFF73] text-2xl font-bold">→</div>
+                  <div className="flex items-center gap-3">
+                    <div className="text-right">
+                      <div className="font-bold text-gray-900">{corridor.to}</div>
+                      <div className="text-xs text-gray-500">Fiat</div>
+                    </div>
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">
+                      {corridor.flag}
+                    </div>
+                  </div>
+                </div>
+                <div className="text-center bg-gradient-to-r from-[#E9FCD4] to-[#FFF8C5] rounded-2xl p-4">
+                  <div className="text-sm text-gray-600 mb-1">Current Rate</div>
+                  <div className="text-2xl font-bold text-gray-900">{corridor.rate}</div>
+                </div>
+                <div className="mt-4 flex items-center justify-center gap-2">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <div className="text-xs text-gray-600 font-medium">Instant settlement</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="relative bg-gradient-to-br from-[#0D0D0D] via-[#1a1a1a] to-[#0D0D0D] text-white py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(143,255,115,0.1),transparent_70%)]"></div>
+        
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-4xl mx-auto text-center space-y-8">
+            <h2 className="text-4xl md:text-6xl font-bold">
+              Are You Set for
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8FFF73] to-[#E8E0FF]">
+                Borderless Payments?
+              </span>
+            </h2>
+            <p className="text-xl text-gray-300">
+              Instant, secure, and global payments at your fingertips.
+            </p>
+            <Link
+              href="/create"
+              className="inline-flex items-center gap-2 px-12 py-5 bg-[#8FFF73] text-black text-lg font-bold rounded-full hover:bg-[#7FEF63] transition-all transform hover:scale-105 shadow-[0_0_50px_rgba(143,255,115,0.4)] hover:shadow-[0_0_80px_rgba(143,255,115,0.6)]"
+            >
+              Start Now
+              <ArrowRight className="w-6 h-6" />
+            </Link>
+            <p className="text-sm text-gray-400">
+              No KYC required. Fast & free.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-[#0D0D0D] text-white py-12 border-t-2 border-[#8FFF73]/30">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-gradient-to-br from-[#8FFF73] to-[#E8E0FF] rounded-xl flex items-center justify-center">
+                <Coins className="w-6 h-6 text-[#0D0D0D]" />
+              </div>
+              <span className="text-2xl font-bold">PeerMint</span>
+            </div>
+
+            <div className="flex gap-8">
+              <Link href="/" className="hover:text-[#8FFF73] transition-colors">Home</Link>
+              <Link href="/create" className="hover:text-[#8FFF73] transition-colors">Create</Link>
+              <Link href="/my-requests" className="hover:text-[#8FFF73] transition-colors">My Requests</Link>
+              <Link href="/explore" className="hover:text-[#8FFF73] transition-colors">Explore</Link>
+            </div>
+
+            <div className="flex gap-4">
+              <a href="#" className="w-10 h-10 bg-white/10 hover:bg-[#8FFF73]/20 rounded-full flex items-center justify-center transition-colors">
+                𝕏
+              </a>
+              <a href="#" className="w-10 h-10 bg-white/10 hover:bg-[#8FFF73]/20 rounded-full flex items-center justify-center transition-colors">
+                D
+              </a>
+              <a href="#" className="w-10 h-10 bg-white/10 hover:bg-[#8FFF73]/20 rounded-full flex items-center justify-center transition-colors">
+                T
+              </a>
+            </div>
+          </div>
+
+          <div className="text-center mt-8 pt-8 border-t border-white/10">
+            <p className="text-gray-400 text-sm">
+              © 2025 PeerMint. All rights reserved. Powered by Solana.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </main>
+  );
+}

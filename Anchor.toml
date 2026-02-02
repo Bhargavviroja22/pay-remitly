@@ -1,0 +1,22 @@
+[toolchain]
+package_manager = "yarn"
+
+[features]
+resolution = true
+skip-lint = false
+
+[programs.localnet]
+peermint = "3CtHSsibXhpnboiZerHi26QN2HNvv5c3jmAQ5RwHcT8G"
+
+[programs.devnet]
+peermint = "3CtHSsibXhpnboiZerHi26QN2HNvv5c3jmAQ5RwHcT8G"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "devnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "yarn tsx node_modules/.bin/mocha -t 1000000 'tests/**/*.ts'"

@@ -1,0 +1,265 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+/* Custom Animations */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 6s ease-in-out 2s infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out;
+}
+
+/* ============================================
+   WALLET ADAPTER STYLES - Clean & Minimal
+   ============================================ */
+
+/* Wallet Connect Button */
+.wallet-adapter-button {
+  background: #16A34A !important;
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+  border: none !important;
+  border-radius: 12px !important;
+  padding: 10px 20px !important;
+  font-size: 15px !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  cursor: pointer !important;
+  transition: all 200ms ease !important;
+}
+
+/* Ensure button text is visible */
+.wallet-adapter-button span,
+.wallet-adapter-button * {
+  color: #FFFFFF !important;
+}
+
+/* Button icon */
+.wallet-adapter-button-start-icon {
+  width: 20px !important;
+  height: 20px !important;
+  margin-right: 4px !important;
+}
+
+.wallet-adapter-button:hover:not(:disabled) {
+  background: #15803D !important;
+}
+
+.wallet-adapter-button:disabled {
+  opacity: 0.6 !important;
+  cursor: not-allowed !important;
+}
+
+/* Wallet Dropdown (when wallet is connected) */
+.wallet-adapter-dropdown {
+  background: #FFFFFF !important;
+  border: 1px solid #E5E7EB !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+.wallet-adapter-dropdown-list {
+  background: #FFFFFF !important;
+  padding: 4px !important;
+}
+
+.wallet-adapter-dropdown-list-item {
+  color: #111827 !important;
+  padding: 10px 14px !important;
+  border-radius: 8px !important;
+  transition: background 150ms ease !important;
+}
+
+.wallet-adapter-dropdown-list-item:hover {
+  background: #F3F4F6 !important;
+}
+
+/* Wallet Modal - Backdrop */
+.wallet-adapter-modal-wrapper {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9999 !important;
+  background: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(4px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Wallet Modal - Container */
+.wallet-adapter-modal {
+  background: #FFFFFF !important;
+  border-radius: 20px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+  padding: 24px !important;
+  max-width: 400px !important;
+  width: 90% !important;
+  max-height: 90vh !important;
+  overflow-y: auto !important;
+}
+
+/* Modal Header */
+.wallet-adapter-modal-title {
+  color: #111827 !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+  margin-bottom: 20px !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+}
+
+/* Wallet List */
+.wallet-adapter-modal-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+}
+
+/* Wallet List Item */
+.wallet-adapter-modal-list-item {
+  background: #F9FAFB !important;
+  border: 1px solid #E5E7EB !important;
+  border-radius: 12px !important;
+  padding: 16px 18px !important;
+  cursor: pointer !important;
+  transition: all 200ms ease !important;
+  margin-bottom: 8px !important;
+}
+
+.wallet-adapter-modal-list-item:hover {
+  background: #F3F4F6 !important;
+  border-color: #D1D5DB !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Wallet List Button (actual clickable element) */
+.wallet-adapter-modal-list-item button {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  cursor: pointer !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  color: #111827 !important;
+  text-align: left !important;
+}
+
+/* Wallet Icon */
+.wallet-adapter-modal-list-item img,
+.wallet-adapter-modal-list-item i {
+  width: 32px !important;
+  height: 32px !important;
+  flex-shrink: 0 !important;
+}
+
+/* Wallet Name - Ensure high contrast */
+.wallet-adapter-modal-list-item span,
+.wallet-adapter-modal-list-item button span,
+.wallet-adapter-modal-list-item * {
+  color: #111827 !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  flex: 1 !important;
+  text-align: left !important;
+  line-height: 1.5 !important;
+}
+
+/* Close Button */
+.wallet-adapter-modal-button-close {
+  position: absolute !important;
+  top: 16px !important;
+  right: 16px !important;
+  background: transparent !important;
+  border: none !important;
+  width: 32px !important;
+  height: 32px !important;
+  cursor: pointer !important;
+  color: #6B7280 !important;
+  transition: color 200ms ease !important;
+}
+
+.wallet-adapter-modal-button-close:hover {
+  color: #111827 !important;
+}
+
+/* Ensure all modal text is visible */
+.wallet-adapter-modal * {
+  font-family: 'Inter', system-ui, sans-serif !important;
+}
+
+.wallet-adapter-modal button {
+  color: inherit !important;
+}
+
+.wallet-adapter-modal h1,
+.wallet-adapter-modal h2,
+.wallet-adapter-modal h3 {
+  color: #111827 !important;
+}
