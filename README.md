@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # pay-remitly
 Pay-Remitly is a peer-to-peer escrow platform built on Solana that enables seamless conversion between Indian Rupees (INR) and USDC stablecoin. Users can create payment requests with UPI/payment details, and helpers fulfill these requests by providing INR liquidity in exchange for USDC + a helper fee.
 =======
@@ -6,7 +5,7 @@ Pay-Remitly is a peer-to-peer escrow platform built on Solana that enables seaml
 
 **Decentralized P2P INR-USDC Exchange on Solana**
 
-PeerMint is a peer-to-peer escrow platform built on Solana that enables seamless conversion between Indian Rupees (INR) and USDC stablecoin. Users can create payment requests with UPI/payment details, and helpers fulfill these requests by providing INR liquidity in exchange for USDC + a helper fee.
+Pay-Remitly is a peer-to-peer escrow platform built on Solana that enables seamless conversion between Indian Rupees (INR) and USDC stablecoin. Users can create payment requests with UPI/payment details, and helpers fulfill these requests by providing INR liquidity in exchange for USDC + a helper fee.
 
 ![Solana](https://img.shields.io/badge/Solana-Devnet-9945FF?style=for-the-badge&logo=solana)
 ![Next.js](https://img.shields.io/badge/Next.js-16.0-black?style=for-the-badge&logo=next.js)
@@ -83,8 +82,8 @@ app/peermint-frontend/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/AbhimanyuAjudiya/PeerMint.git
-   cd peermint
+   git clone https://github.com/Bhargavviroja22/pay-remitly.git
+   cd pay-remitly
    ```
 
 2. **Install Solana CLI**
@@ -118,7 +117,7 @@ app/peermint-frontend/
 
 6. **Install frontend dependencies**
    ```bash
-   cd app/peermint-frontend
+   cd app/pay-remitlyt-frontend
    npm install
    ```
 
@@ -269,8 +268,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👨‍💻 Author
 
-**Abhimanyu Ajudiya**
-- GitHub: [@AbhimanyuAjudiya](https://github.com/AbhimanyuAjudiya)
+**Bhargav Viroja**
+- GitHub: [@AbhimanyuAjudiya](https://github.com/Bhargavviroja22)
 
 ## 🙏 Acknowledgments
 
