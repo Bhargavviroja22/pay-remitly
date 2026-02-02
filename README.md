@@ -269,7 +269,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👨‍💻 Author
 
 **Bhargav Viroja**
-- GitHub: [@AbhimanyuAjudiya](https://github.com/Bhargavviroja22)
+- GitHub: [@Bhargavviroja22](https://github.com/Bhargavviroja22)
 
 ## 🙏 Acknowledgments
 
